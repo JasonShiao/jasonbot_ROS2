@@ -32,6 +32,21 @@ curl -sSL http://get.gazebosim.org | sh
 2. Install colcon package manager
 ```
 sudo apt install python3-colcon-common-extensions
+
+# Setup colcon_cd
+echo "source /usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
+# change the humble to the exact version of ros2 on your system
+echo "export _colcon_cd_root=/opt/ros/humble/" >> ~/.bashrc
+
+# Setup colcon_tab
+echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ~/.bashrc
 ```
 ##
 
+PS. To create a package in ROS2, you execute the following command
+```
+# NOTE: Similar to the function of catkin_create_pkg <package name> in ROS 1 
+
+ros2 pkg create --build-type ament_cmake <package name> --dependencies [dep 1] [dep 2] ...
+# e.g. ros2 pkg create --build-type ament_cmake jsonbot_ros2 --dependencies rclcpp std_msgs
+```
